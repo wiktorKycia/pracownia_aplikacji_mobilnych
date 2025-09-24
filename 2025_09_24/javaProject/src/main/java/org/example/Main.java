@@ -129,10 +129,10 @@ public class Main
         }
 
         try { // saving 4.2 to a file
-            FileWriter writer = new FileWriter("wyniki4.txt");
+            FileWriter writer = new FileWriter("wyniki4.txt", true);
             String text = number_with_the_most_primes + " " + czynniki_pierwsze(number_with_the_most_primes) + "\n" +
                     number_with_the_most_different_primes + " " + rozne_czynniki_pierwsze(number_with_the_most_different_primes);
-            writer.write(text);
+            writer.append(text);
             writer.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
