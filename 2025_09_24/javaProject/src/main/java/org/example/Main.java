@@ -9,6 +9,55 @@ import java.io.IOException;
 
 public class Main
 {
+    static int czynniki_pierwsze(int n)
+    {
+        int result = 0;
+
+        int dzielnik = 2;
+
+        while(n > 1)
+        {
+            if(n % dzielnik == 0)
+            {
+                n /= dzielnik;
+                result++;
+            }
+            else
+            {
+                dzielnik++;
+            }
+        }
+
+        return result;
+    }
+
+    static int rozne_czynniki_pierwsze(int n)
+    {
+        int result = 0;
+
+        int dzielnik = 2;
+        ArrayList<Integer> czynniki = new ArrayList<Integer>();
+
+        while(n > 1)
+        {
+            if(n % dzielnik == 0)
+            {
+                n /= dzielnik;
+                if(!czynniki.contains(dzielnik))
+                {
+                    czynniki.add(dzielnik);
+                    result++;
+                }
+            }
+            else
+            {
+                dzielnik++;
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args)
     {
         File file = new File("./Dane_2205/liczby.txt");
@@ -59,5 +108,8 @@ public class Main
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+
+        System.out.println(czynniki_pierwsze(420));
+        System.out.println(rozne_czynniki_pierwsze(420));
     }
 }
