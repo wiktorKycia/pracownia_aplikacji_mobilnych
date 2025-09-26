@@ -73,26 +73,54 @@ public class Main
         return result;
     }
 
-    /**
-     * Counts the number of lines in a given file.
-     *
-     * @param file The file to count lines in.
-     * @return The number of lines in the file.
-     */
-    static int getFileLength(File file)
+    static boolean checkIfAIsFactorOfB(int a, int b)
     {
-        int file_length = 0;
-        try (Scanner lineCounter = new Scanner(file)) {
-            while (lineCounter.hasNextLine()) {
-                lineCounter.nextLine();
-                file_length++;
+        ArrayList<Integer> aFactors = getPrimeFactors(a);
+        ArrayList<Integer> bFactors = getPrimeFactors(b);
+        for(Integer factor: aFactors)
+        {
+            if(!bFactors.contains(factor))
+            {
+                return false;
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
         }
-        return file_length;
+        return true;
     }
+
+    static boolean checkIfValid3(int x, int y, int z)
+    {
+        if(x == z & y == z)
+        {
+            return false;
+        }
+        else if(!checkIfAIsFactorOfB(x, y))
+        {
+            return false;
+        }
+        else return checkIfAIsFactorOfB(y, z);
+    }
+
+    static boolean checkIfValid5(int u, int w, int x, int y, int z)
+    {
+        if(x == y && x == z && x == u && x == w)
+        {
+            return false;
+        }
+        else if(!checkIfAIsFactorOfB(u, w))
+        {
+            return false;
+        }
+        else if(!checkIfAIsFactorOfB(w, x))
+        {
+            return false;
+        }
+        else if(!checkIfAIsFactorOfB(x, y))
+        {
+            return false;
+        }
+        else return checkIfAIsFactorOfB(y, z);
+    }
+
 
     static void writeToFile(String filename, String text, boolean shouldAppend)
     {
@@ -119,10 +147,6 @@ public class Main
     {
 //        File file = new File("./Dane_2205/liczby.txt");
         File file = new File("./Dane_2205/przyklad.txt");
-
-
-        // reading the file length
-//        int file_length = getFileLength(file);
 
 
         // reading a whole file to the list
@@ -177,6 +201,34 @@ public class Main
         // saving 4.2 to a file
         writeToFile("wyniki4.txt", number_with_the_most_primes + " " + most_primes + "\n" +
                 number_with_the_most_different_primes + " " + most_different_primes, true);
+
+        // doing task 4.3
+        int valid3 = 0;
+        int valid5 = 0;
+
+        for (int i = 0; i < numbers.size(); i++) {
+            for (int j = 0; j < numbers.size(); j++) {
+                for (int k = 0; k < numbers.size(); k++) {
+                    if(checkIfValid3(numbers.get(i), numbers.get(j), numbers.get(k)))
+                    {
+                        valid3++;
+                        writeToFile("trojki.txt", numbers.get(i) + " " + numbers.get(j) + " " + numbers.get(k), true);
+                    }
+                    for (int l = 0; l < numbers.size(); l++) {
+                        for (int m = 0; m < numbers.size(); m++) {
+                            if(checkIfValid5(numbers.get(i), numbers.get(j), numbers.get(k), numbers.get(l), numbers.get(m)))
+                            {
+                                valid5++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // saving 4.3 to a file
+        writeToFile("wyniki4.txt", "dobre trójki: "+valid3, true);
+        writeToFile("wyniki4.txt", "dobre piątki: "+valid5, true);
+
 
 
 
