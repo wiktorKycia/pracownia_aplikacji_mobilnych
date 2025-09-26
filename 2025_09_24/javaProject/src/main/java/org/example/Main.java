@@ -2,36 +2,44 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main
 {
+    public static HashMap<Integer, ArrayList<Integer>> PrimeFactors = new HashMap<Integer, ArrayList<Integer>>();
     static ArrayList<Integer> getPrimeFactors(int n)
     {
-        ArrayList<Integer> primeFactors = new ArrayList<>();
-
-        int factor = 2;
-
-        while (n > 1)
+        ArrayList<Integer> arr = PrimeFactors.get(n);
+        if (arr == null)
         {
-            if (n % factor == 0)
+            ArrayList<Integer> primeFactors = new ArrayList<>();
+
+            int factor = 2;
+
+            while (n > 1)
             {
-                n /= factor;
-                primeFactors.add(factor);
+                if (n % factor == 0)
+                {
+                    n /= factor;
+                    primeFactors.add(factor);
+                }
+                else
+                {
+                    factor++;
+                }
             }
-            else
-            {
-                factor++;
-            }
-        }
 //        System.out.println("number: "+n);
 //        System.out.println("primes: "+ primeFactors);
+            PrimeFactors.put(n, primeFactors);
+            return primeFactors;
+        }
+        else
+        {
+            return arr;
+        }
 
-        return primeFactors;
     }
 
     static ArrayList<Integer> removeDuplicates(ArrayList<Integer> numbers)
