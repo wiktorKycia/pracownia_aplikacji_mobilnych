@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileWriter;
@@ -108,7 +109,8 @@ public class Main
 
     static void main(String[] args)
     {
-        File file = new File("./Dane_2205/liczby.txt");
+//        File file = new File("./Dane_2205/liczby.txt");
+        File file = new File("./Dane_2205/przyklad.txt");
 
 
         // reading the file length
@@ -163,7 +165,7 @@ public class Main
         }
 
         // saving 4.1 to a file
-        writeToFile("wyniki4.txt", valid_numbers.getFirst() + " " + valid_numbers.toArray().length + "\n", false);
+        writeToFile("wyniki4.txt", valid_numbers.size() + " " + valid_numbers.getFirst() + "\n", false);
         // saving 4.2 to a file
         writeToFile("wyniki4.txt", number_with_the_most_primes + " " + most_primes + "\n" +
                 number_with_the_most_different_primes + " " + most_different_primes, true);
@@ -173,6 +175,8 @@ public class Main
             // testing the methods
 //        System.out.println(czynniki_pierwsze(420));
 //        System.out.println(rozne_czynniki_pierwsze(420));
+
+//        System.out.println(removeDuplicates(new ArrayList<>(Arrays.asList(1, 2, 2, 3))));
 
     }
 }
