@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
 import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -129,6 +130,16 @@ public class Main
         else return checkIfAIsFactorOfB(y, z);
     }
 
+    static int getFileLength(File file)
+    {
+        try {
+            return (int) Files.lines(file.toPath()).count();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     static void writeToFile(String filename, String text, boolean shouldAppend)
     {
@@ -156,15 +167,14 @@ public class Main
 //        File file = new File("./Dane_2205/liczby.txt");
         File file = new File("./Dane_2205/przyklad.txt");
 
-
         // reading a whole file to the list
-        ArrayList<Integer> numbers = new ArrayList<>();
+        int[] numbers = new int[getFileLength(file)];
 
         try (Scanner reader = new Scanner(file))
         {
-            while(reader.hasNextLine())
+            for(int i = 0; reader.hasNextLine(); i++)
             {
-                numbers.add(Integer.parseInt(reader.nextLine()));
+                numbers[i] = (Integer.parseInt(reader.nextLine()));
             }
         }
         catch (FileNotFoundException e)
@@ -174,10 +184,13 @@ public class Main
         }
 
 
-        // doing the things
-        ArrayList<Integer> valid_numbers = new ArrayList<>();
+        int number_of_valid_numbers = 0;
+        int first_valid_number = 0;
+        boolean flag_valid_number = true;
+
         int number_with_the_most_primes = 0;
         int most_primes = 0;
+
         int number_with_the_most_different_primes = 0;
         int most_different_primes = 0;
 
@@ -186,7 +199,12 @@ public class Main
             String numberString = Integer.toString(number);
             if (numberString.charAt(0) == numberString.charAt(numberString.length() - 1))
             {
-                valid_numbers.add(number);
+                number_of_valid_numbers++;
+                if(flag_valid_number)
+                {
+                    first_valid_number = number;
+                    flag_valid_number = false;
+                }
             }
 
             // calculations for 4.2
@@ -205,7 +223,7 @@ public class Main
         }
 
         // saving 4.1 to a file
-        writeToFile("wyniki4.txt", valid_numbers.size() + " " + valid_numbers.getFirst() + "\n", false);
+        writeToFile("wyniki4.txt", number_of_valid_numbers + " " + first_valid_number + "\n", false);
         // saving 4.2 to a file
         writeToFile("wyniki4.txt", number_with_the_most_primes + " " + most_primes + "\n" +
                 number_with_the_most_different_primes + " " + most_different_primes, true);
@@ -214,17 +232,24 @@ public class Main
         int valid3 = 0;
         int valid5 = 0;
 
-        for (int i = 0; i < numbers.size(); i++) {
-            for (int j = 0; j < numbers.size(); j++) {
-                for (int k = 0; k < numbers.size(); k++) {
-                    if(checkIfValid3(numbers.get(i), numbers.get(j), numbers.get(k)))
+        Arrays.sort(numbers);
+
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println("i: "+i);
+            for (int j = i+1; j < numbers.length; j++) {
+                System.out.println("j: "+j);
+                for (int k = j+1; k < numbers.length; k++) {
+                    System.out.println("k: "+k);
+                    if(checkIfValid3(numbers[i], numbers[j], numbers[k]))
                     {
                         valid3++;
-                        writeToFile("trojki.txt", numbers.get(i) + " " + numbers.get(j) + " " + numbers.get(k), true);
+                        writeToFile("trojki.txt", numbers[i] + " " + numbers[j] + " " + numbers[k], true);
                     }
-                    for (int l = 0; l < numbers.size(); l++) {
-                        for (int m = 0; m < numbers.size(); m++) {
-                            if(checkIfValid5(numbers.get(i), numbers.get(j), numbers.get(k), numbers.get(l), numbers.get(m)))
+                    for (int l = k+1; l < numbers.length; l++) {
+                        System.out.println("l: "+l);
+                        for (int m = l+1; m < numbers.length; m++) {
+                            System.out.println("m: "+m);
+                            if(checkIfValid5(numbers[i], numbers[j], numbers[k], numbers[l], numbers[m]))
                             {
                                 valid5++;
                             }
