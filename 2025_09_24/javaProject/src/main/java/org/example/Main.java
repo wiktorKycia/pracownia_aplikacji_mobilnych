@@ -112,18 +112,17 @@ public class Main
 
 
         // reading the file length
-        int file_length = getFileLength(file);
+//        int file_length = getFileLength(file);
 
 
-        // reading a whole file to the array
-        String[] numbers = new String[file_length];
+        // reading a whole file to the list
+        ArrayList<String> numbers = new ArrayList<>();
 
         try (Scanner reader = new Scanner(file))
         {
-            for(int i = 0;reader.hasNextLine(); i++)
+            while(reader.hasNextLine())
             {
-                String data = reader.nextLine();
-                numbers[i] = data;
+                numbers.add(reader.nextLine());
             }
         }
         catch (FileNotFoundException e)
@@ -138,22 +137,21 @@ public class Main
         int number_with_the_most_primes = 0;
         int number_with_the_most_different_primes = 0;
 
-        for(int i = 0; i < numbers.length; i++)
-        {
+        for (String number : numbers) {
             // checking condition for 4.1
-            if(numbers[i].charAt(0) == numbers[i].charAt(numbers[i].length()-1))
+            if (number.charAt(0) == number.charAt(number.length() - 1))
             {
-                valid_numbers.add(numbers[i]);
+                valid_numbers.add(number);
             }
 
             // calculations for 4.2
-            if(getNumberOfPrimeFactors(number_with_the_most_primes) < getNumberOfPrimeFactors(Integer.parseInt(numbers[i])))
+            if (getNumberOfPrimeFactors(number_with_the_most_primes) < getNumberOfPrimeFactors(Integer.parseInt(number)))
             {
-                number_with_the_most_primes = Integer.parseInt(numbers[i]);
+                number_with_the_most_primes = Integer.parseInt(number);
             }
-            if(getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes) < getNumberOfDifferentPrimeFactors(Integer.parseInt(numbers[i])))
+            if (getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes) < getNumberOfDifferentPrimeFactors(Integer.parseInt(number)))
             {
-                number_with_the_most_different_primes = Integer.parseInt(numbers[i]);
+                number_with_the_most_different_primes = Integer.parseInt(number);
             }
         }
 
