@@ -135,7 +135,9 @@ public class Main
         // doing the things
         ArrayList<Integer> valid_numbers = new ArrayList<>();
         int number_with_the_most_primes = 0;
+        int most_primes = 0;
         int number_with_the_most_different_primes = 0;
+        int most_different_primes = 0;
 
         for (int number : numbers) {
             // checking condition for 4.1
@@ -146,21 +148,25 @@ public class Main
             }
 
             // calculations for 4.2
-            if (getNumberOfPrimeFactors(number_with_the_most_primes) < getNumberOfPrimeFactors(number))
+            int number_of_primes_for_n = getNumberOfPrimeFactors(number);
+            if (most_primes < number_of_primes_for_n)
             {
                 number_with_the_most_primes = number;
+                most_primes = number_of_primes_for_n;
             }
-            if (getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes) < getNumberOfDifferentPrimeFactors(number))
+            int number_of_different_primes_for_n = getNumberOfDifferentPrimeFactors(number);
+            if (most_different_primes < number_of_different_primes_for_n)
             {
                 number_with_the_most_different_primes = number;
+                most_different_primes = number_of_different_primes_for_n;
             }
         }
 
         // saving 4.1 to a file
         writeToFile("wyniki4.txt", valid_numbers.getFirst() + " " + valid_numbers.toArray().length + "\n", false);
         // saving 4.2 to a file
-        writeToFile("wyniki4.txt", number_with_the_most_primes + " " + getNumberOfPrimeFactors(number_with_the_most_primes) + "\n" +
-                number_with_the_most_different_primes + " " + getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes), true);
+        writeToFile("wyniki4.txt", number_with_the_most_primes + " " + most_primes + "\n" +
+                number_with_the_most_different_primes + " " + most_different_primes, true);
 
 
 
