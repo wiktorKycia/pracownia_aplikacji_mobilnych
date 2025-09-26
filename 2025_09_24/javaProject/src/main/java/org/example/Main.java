@@ -9,6 +9,12 @@ import java.io.IOException;
 
 public class Main
 {
+    /**
+     * Calculates the total number of prime factors of a given number.
+     *
+     * @param n The number to calculate prime factors for.
+     * @return The total count of prime factors.
+     */
     static int czynniki_pierwsze(int n)
     {
         int result = 0;
@@ -31,6 +37,12 @@ public class Main
         return result;
     }
 
+    /**
+     * Calculates the number of distinct prime factors of a given number.
+     *
+     * @param n The number to calculate distinct prime factors for.
+     * @return The count of distinct prime factors.
+     */
     static int rozne_czynniki_pierwsze(int n)
     {
         int result = 0;
@@ -58,12 +70,14 @@ public class Main
         return result;
     }
 
-    public static void main(String[] args)
+    /**
+     * Counts the number of lines in a given file.
+     *
+     * @param file The file to count lines in.
+     * @return The number of lines in the file.
+     */
+    static int getFileLength(File file)
     {
-        File file = new File("./Dane_2205/liczby.txt");
-
-
-        // reading the file length
         int file_length = 0;
         try (Scanner lineCounter = new Scanner(file)) {
             while (lineCounter.hasNextLine()) {
@@ -74,6 +88,37 @@ public class Main
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        return file_length;
+    }
+
+    static void writeToFile(String filename, String text, boolean shouldAppend)
+    {
+        try {
+            FileWriter writer = new FileWriter(filename, shouldAppend);
+
+            if (shouldAppend)
+            {
+                writer.append(text);
+            }
+            else
+            {
+                writer.write(text);
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    static void main(String[] args)
+    {
+        File file = new File("./Dane_2205/liczby.txt");
+
+
+        // reading the file length
+        int file_length = getFileLength(file);
 
 
         // reading a whole file to the array
@@ -95,7 +140,7 @@ public class Main
 
 
         // doing the things
-        ArrayList<String> valid_numbers = new ArrayList<String>();
+        ArrayList<String> valid_numbers = new ArrayList<>();
         int number_with_the_most_primes = 0;
         int number_with_the_most_different_primes = 0;
 
@@ -118,26 +163,12 @@ public class Main
             }
         }
 
-        try { // saving 4.1 to a file
-            FileWriter writer = new FileWriter("wyniki4.txt");
-            String text = valid_numbers.getFirst() + " " + valid_numbers.toArray().length + "\n";
-            writer.write(text);
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+        // saving 4.1 to a file
+        writeToFile("wyniki4.txt", valid_numbers.getFirst() + " " + valid_numbers.toArray().length + "\n", false);
+        // saving 4.2 to a file
+        writeToFile("wyniki4.txt", number_with_the_most_primes + " " + czynniki_pierwsze(number_with_the_most_primes) + "\n" +
+                number_with_the_most_different_primes + " " + rozne_czynniki_pierwsze(number_with_the_most_different_primes), true);
 
-        try { // saving 4.2 to a file
-            FileWriter writer = new FileWriter("wyniki4.txt", true);
-            String text = number_with_the_most_primes + " " + czynniki_pierwsze(number_with_the_most_primes) + "\n" +
-                    number_with_the_most_different_primes + " " + rozne_czynniki_pierwsze(number_with_the_most_different_primes);
-            writer.append(text);
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
 
 
             // testing the methods
