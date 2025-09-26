@@ -21,15 +21,15 @@ public class Main
             if (n % factor == 0)
             {
                 n /= factor;
-                primeFactors.add(n);
+                primeFactors.add(factor);
             }
             else
             {
                 factor++;
             }
         }
-        System.out.println("number: "+n);
-        System.out.println("primes: "+ primeFactors);
+//        System.out.println("number: "+n);
+//        System.out.println("primes: "+ primeFactors);
 
         return primeFactors;
     }
@@ -42,8 +42,8 @@ public class Main
                 resultArray.add(number);
             }
         }
-        System.out.println("original: "+numbers);
-        System.out.println("reduced:  "+resultArray);
+//        System.out.println("original: "+numbers);
+//        System.out.println("reduced:  "+resultArray);
         return resultArray;
     }
 
@@ -66,10 +66,10 @@ public class Main
      */
     static int getNumberOfDifferentPrimeFactors(int n)
     {
-        System.out.println("===============");
-        System.out.println("number: "+n);
+//        System.out.println("===============");
+//        System.out.println("number: "+n);
         int result = removeDuplicates(getPrimeFactors(n)).size();
-        System.out.println("returning: "+result);
+//        System.out.println("returning: "+result);
         return result;
     }
 
@@ -182,7 +182,7 @@ public class Main
 
             // testing the methods
 //        System.out.println(getNumberOfPrimeFactors(420)); // to działa
-        System.out.println(getNumberOfDifferentPrimeFactors(420));
+//        System.out.println(getNumberOfDifferentPrimeFactors(420));
 
 //        System.out.println(removeDuplicates(new ArrayList<>(Arrays.asList(1, 2, 2, 3)))); // to działa
 
