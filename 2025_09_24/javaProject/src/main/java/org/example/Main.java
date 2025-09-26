@@ -55,23 +55,11 @@ public class Main
         return resultArray;
     }
 
-    /**
-     * Calculates the total number of prime factors of a given number.
-     *
-     * @param n The number to calculate prime factors for.
-     * @return The total count of prime factors.
-     */
     static int getNumberOfPrimeFactors(int n)
     {
         return getPrimeFactors(n).size();
     }
 
-    /**
-     * Calculates the number of distinct prime factors of a given number.
-     *
-     * @param n The number to calculate distinct prime factors for.
-     * @return The count of distinct prime factors.
-     */
     static int getNumberOfDifferentPrimeFactors(int n)
     {
 //        System.out.println("===============");
@@ -81,18 +69,30 @@ public class Main
         return result;
     }
 
+    public static HashMap<IntPair, Boolean> AAndBFactors = new HashMap<>();
     static boolean checkIfAIsFactorOfB(int a, int b)
     {
-        ArrayList<Integer> aFactors = getPrimeFactors(a);
-        ArrayList<Integer> bFactors = getPrimeFactors(b);
-        for(Integer factor: aFactors)
+        if (a > b)
         {
-            if(!bFactors.contains(factor))
-            {
-                return false;
-            }
+            return false;
         }
-        return true;
+        boolean valueExists = AAndBFactors.containsKey(new IntPair(a, b));
+        if (!valueExists)
+        {
+            ArrayList<Integer> aFactors = getPrimeFactors(a);
+            ArrayList<Integer> bFactors = getPrimeFactors(b);
+            for(Integer factor: aFactors)
+            {
+                if(!bFactors.contains(factor))
+                {
+                    AAndBFactors.put(new IntPair(a,b), false);
+                    return false;
+                }
+            }
+            AAndBFactors.put(new IntPair(a,b), true);
+            return true;
+        }
+        return AAndBFactors.get(new IntPair(a, b));
     }
 
     static boolean checkIfValid3(int x, int y, int z)
