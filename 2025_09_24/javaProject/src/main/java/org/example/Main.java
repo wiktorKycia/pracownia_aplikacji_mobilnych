@@ -116,13 +116,13 @@ public class Main
 
 
         // reading a whole file to the list
-        ArrayList<String> numbers = new ArrayList<>();
+        ArrayList<Integer> numbers = new ArrayList<>();
 
         try (Scanner reader = new Scanner(file))
         {
             while(reader.hasNextLine())
             {
-                numbers.add(reader.nextLine());
+                numbers.add(Integer.parseInt(reader.nextLine()));
             }
         }
         catch (FileNotFoundException e)
@@ -133,25 +133,26 @@ public class Main
 
 
         // doing the things
-        ArrayList<String> valid_numbers = new ArrayList<>();
+        ArrayList<Integer> valid_numbers = new ArrayList<>();
         int number_with_the_most_primes = 0;
         int number_with_the_most_different_primes = 0;
 
-        for (String number : numbers) {
+        for (int number : numbers) {
             // checking condition for 4.1
-            if (number.charAt(0) == number.charAt(number.length() - 1))
+            String numberString = Integer.toString(number);
+            if (numberString.charAt(0) == numberString.charAt(numberString.length() - 1))
             {
                 valid_numbers.add(number);
             }
 
             // calculations for 4.2
-            if (getNumberOfPrimeFactors(number_with_the_most_primes) < getNumberOfPrimeFactors(Integer.parseInt(number)))
+            if (getNumberOfPrimeFactors(number_with_the_most_primes) < getNumberOfPrimeFactors(number))
             {
-                number_with_the_most_primes = Integer.parseInt(number);
+                number_with_the_most_primes = number;
             }
-            if (getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes) < getNumberOfDifferentPrimeFactors(Integer.parseInt(number)))
+            if (getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes) < getNumberOfDifferentPrimeFactors(number))
             {
-                number_with_the_most_different_primes = Integer.parseInt(number);
+                number_with_the_most_different_primes = number;
             }
         }
 
