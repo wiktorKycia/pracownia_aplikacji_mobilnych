@@ -9,32 +9,48 @@ import java.io.IOException;
 
 public class Main
 {
+    static ArrayList<Integer> getPrimeFactors(int n)
+    {
+        ArrayList<Integer> primeFactors = new ArrayList<>();
+
+        int factor = 2;
+
+        while (n > 1)
+        {
+            if (n % factor == 0)
+            {
+                n /= factor;
+                primeFactors.add(n);
+            }
+            else
+            {
+                factor++;
+            }
+        }
+
+        return primeFactors;
+    }
+
+    static ArrayList<Integer> removeDuplicates(ArrayList<Integer> numbers)
+    {
+        ArrayList<Integer> resultArray = new ArrayList<>();
+        for (Integer number : numbers) {
+            if (!resultArray.contains(number)) {
+                resultArray.add(number);
+            }
+        }
+        return resultArray;
+    }
+
     /**
      * Calculates the total number of prime factors of a given number.
      *
      * @param n The number to calculate prime factors for.
      * @return The total count of prime factors.
      */
-    static int czynniki_pierwsze(int n)
+    static int getNumberOfPrimeFactors(int n)
     {
-        int result = 0;
-
-        int dzielnik = 2;
-
-        while(n > 1)
-        {
-            if(n % dzielnik == 0)
-            {
-                n /= dzielnik;
-                result++;
-            }
-            else
-            {
-                dzielnik++;
-            }
-        }
-
-        return result;
+        return getPrimeFactors(n).size();
     }
 
     /**
@@ -43,31 +59,9 @@ public class Main
      * @param n The number to calculate distinct prime factors for.
      * @return The count of distinct prime factors.
      */
-    static int rozne_czynniki_pierwsze(int n)
+    static int getNumberOfDifferentPrimeFactors(int n)
     {
-        int result = 0;
-
-        int dzielnik = 2;
-        ArrayList<Integer> czynniki = new ArrayList<Integer>();
-
-        while(n > 1)
-        {
-            if(n % dzielnik == 0)
-            {
-                n /= dzielnik;
-                if(!czynniki.contains(dzielnik))
-                {
-                    czynniki.add(dzielnik);
-                    result++;
-                }
-            }
-            else
-            {
-                dzielnik++;
-            }
-        }
-
-        return result;
+        return removeDuplicates(getPrimeFactors(n)).size();
     }
 
     /**
@@ -153,11 +147,11 @@ public class Main
             }
 
             // calculations for 4.2
-            if(czynniki_pierwsze(number_with_the_most_primes) < czynniki_pierwsze(Integer.parseInt(numbers[i])))
+            if(getNumberOfPrimeFactors(number_with_the_most_primes) < getNumberOfPrimeFactors(Integer.parseInt(numbers[i])))
             {
                 number_with_the_most_primes = Integer.parseInt(numbers[i]);
             }
-            if(rozne_czynniki_pierwsze(number_with_the_most_different_primes) < rozne_czynniki_pierwsze(Integer.parseInt(numbers[i])))
+            if(getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes) < getNumberOfDifferentPrimeFactors(Integer.parseInt(numbers[i])))
             {
                 number_with_the_most_different_primes = Integer.parseInt(numbers[i]);
             }
@@ -166,8 +160,8 @@ public class Main
         // saving 4.1 to a file
         writeToFile("wyniki4.txt", valid_numbers.getFirst() + " " + valid_numbers.toArray().length + "\n", false);
         // saving 4.2 to a file
-        writeToFile("wyniki4.txt", number_with_the_most_primes + " " + czynniki_pierwsze(number_with_the_most_primes) + "\n" +
-                number_with_the_most_different_primes + " " + rozne_czynniki_pierwsze(number_with_the_most_different_primes), true);
+        writeToFile("wyniki4.txt", number_with_the_most_primes + " " + getNumberOfPrimeFactors(number_with_the_most_primes) + "\n" +
+                number_with_the_most_different_primes + " " + getNumberOfDifferentPrimeFactors(number_with_the_most_different_primes), true);
 
 
 
