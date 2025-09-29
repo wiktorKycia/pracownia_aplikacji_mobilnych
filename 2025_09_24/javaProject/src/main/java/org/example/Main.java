@@ -264,24 +264,32 @@ public class Main
 
         Arrays.sort(numbers);
 
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.println("i: "+i);
-            for (int j = i+1; j < numbers.length; j++) {
-                System.out.println("j: "+j);
-                for (int k = j+1; k < numbers.length; k++) {
-                    System.out.println("k: "+k);
-                    if(checkIfValid3(numbers[i], numbers[j], numbers[k]))
+        for (int i = 0; i < numbers.length; i++)
+        {
+            for (int j = i+1; j < numbers.length; j++)
+            {
+                // jak j nie dzieli i, to nie tracimy czasu na dalsze sprawdzania
+                if(numbers[j] % numbers[i] != 0) continue;
+
+                for (int k = j+1; k < numbers.length; k++)
+                {
+                    // tu już wiemy, że na pewno j dzieli i, więc sprawdzamy tylko czy k dzieli j
+                    if(numbers[k] % numbers[j] == 0)
                     {
                         valid3++;
                         writeToFile("trojki.txt", numbers[i] + " " + numbers[j] + " " + numbers[k], true);
-                    }
-                    for (int l = k+1; l < numbers.length; l++) {
-                        System.out.println("l: "+l);
-                        for (int m = l+1; m < numbers.length; m++) {
-                            System.out.println("m: "+m);
-                            if(checkIfValid5(numbers[i], numbers[j], numbers[k], numbers[l], numbers[m]))
+                        for (int l = k+1; l < numbers.length; l++)
+                        {
+                            // sprawdzam, czy l dzieli k
+                            if(numbers[l] % numbers[k] != 0) continue;
+
+                            for (int m = l+1; m < numbers.length; m++)
                             {
-                                valid5++;
+                                // tutaj tak jak poprzednio, nie muszę sprawdzać innych warunków, bo jest to zrobione wcześniej
+                                if(numbers[m] % numbers[k] == 0)
+                                {
+                                    valid5++;
+                                }
                             }
                         }
                     }
