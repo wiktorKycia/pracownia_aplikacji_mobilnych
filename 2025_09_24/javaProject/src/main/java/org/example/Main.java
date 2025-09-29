@@ -9,6 +9,32 @@ import java.io.IOException;
 
 public class Main
 {
+    static ArrayList<Integer> sieveOfEratosthenes(int max)
+    {
+        boolean[] isPrime = new boolean[max + 1];
+        Arrays.fill(isPrime, true);
+
+        isPrime[0] = isPrime[1] = false;
+        for (int i = 2; i * i <= max; i++)
+        {
+            if (isPrime[i])
+            {
+                for (int j = i * i; j <= max; j += i)
+                {
+                    isPrime[j] = false;
+                }
+            }
+        }
+
+        ArrayList<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= max; i++) {
+            if (isPrime[i]) {
+                primes.add(i);
+            }
+        }
+        return primes;
+    }
+
     public static HashMap<Integer, ArrayList<Integer>> PrimeFactors = new HashMap<Integer, ArrayList<Integer>>();
     static ArrayList<Integer> getPrimeFactors(int n)
     {
@@ -166,6 +192,10 @@ public class Main
     {
 //        File file = new File("./Dane_2205/liczby.txt");
         File file = new File("./Dane_2205/przyklad.txt");
+
+        // predefined prime numbers up to 100_000
+        ArrayList<Integer> primes = sieveOfEratosthenes(100000);
+
 
         // reading a whole file to the list
         int[] numbers = new int[getFileLength(file)];
