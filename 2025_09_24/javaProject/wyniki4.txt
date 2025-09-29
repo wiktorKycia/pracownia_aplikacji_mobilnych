@@ -1,3 +1,5 @@
 26 626
 144 6
-210 4dobre trójki: 10dobre piątki: 1
+210 4
+dobre trójki: 10
+dobre piątki: 1
