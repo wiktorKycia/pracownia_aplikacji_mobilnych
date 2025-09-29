@@ -36,27 +36,24 @@ public class Main
     }
 
     public static HashMap<Integer, ArrayList<Integer>> PrimeFactors = new HashMap<Integer, ArrayList<Integer>>();
-    static ArrayList<Integer> getPrimeFactors(int n)
+    static ArrayList<Integer> getPrimeFactors(int n, ArrayList<Integer> primes)
     {
         ArrayList<Integer> arr = PrimeFactors.get(n);
         if (arr == null)
         {
             ArrayList<Integer> primeFactors = new ArrayList<>();
 
-            int factor = 2;
-
-            while (n > 1)
+            int k = n; // k jest modyfikowalne, n nie
+            for(int factor: primes)
             {
-                if (n % factor == 0)
+                if(factor*factor > n || k == 1) break;
+                while(k % factor == 0)
                 {
-                    n /= factor;
                     primeFactors.add(factor);
-                }
-                else
-                {
-                    factor++;
+                    k /= factor;
                 }
             }
+
             PrimeFactors.put(n, primeFactors);
             return primeFactors;
         }
@@ -78,14 +75,14 @@ public class Main
         return resultArray;
     }
 
-    static int getNumberOfPrimeFactors(int n)
+    static int getNumberOfPrimeFactors(int n, ArrayList<Integer> primes)
     {
-        return getPrimeFactors(n).size();
+        return getPrimeFactors(n, primes).size();
     }
 
-    static int getNumberOfDifferentPrimeFactors(int n)
+    static int getNumberOfDifferentPrimeFactors(int n, ArrayList<Integer> primes)
     {
-        return removeDuplicates(getPrimeFactors(n)).size();
+        return removeDuplicates(getPrimeFactors(n, primes)).size();
     }
 
 
@@ -171,13 +168,13 @@ public class Main
             }
 
             // calculations for 4.2
-            int number_of_primes_for_n = getNumberOfPrimeFactors(number);
+            int number_of_primes_for_n = getNumberOfPrimeFactors(number, primes);
             if (most_primes < number_of_primes_for_n)
             {
                 number_with_the_most_primes = number;
                 most_primes = number_of_primes_for_n;
             }
-            int number_of_different_primes_for_n = getNumberOfDifferentPrimeFactors(number);
+            int number_of_different_primes_for_n = getNumberOfDifferentPrimeFactors(number, primes);
             if (most_different_primes < number_of_different_primes_for_n)
             {
                 number_with_the_most_different_primes = number;
