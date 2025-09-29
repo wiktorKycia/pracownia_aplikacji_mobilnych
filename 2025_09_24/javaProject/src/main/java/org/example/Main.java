@@ -120,8 +120,8 @@ public class Main
 
     static void main(String[] args)
     {
-//        File file = new File("./Dane_2205/liczby.txt");
-        File file = new File("./Dane_2205/przyklad.txt");
+        File file = new File("./Dane_2205/liczby.txt");
+//        File file = new File("./Dane_2205/przyklad.txt");
 
         // predefined prime numbers up to 100_000
         ArrayList<Integer> primes = sieveOfEratosthenes(100000);
@@ -207,7 +207,7 @@ public class Main
                     if(numbers[k] % numbers[j] == 0)
                     {
                         valid3++;
-                        writeToFile("trojki.txt", numbers[i] + " " + numbers[j] + " " + numbers[k], true);
+                        writeToFile("trojki.txt", numbers[i] + " " + numbers[j] + " " + numbers[k] + "\n", true);
                         for (int l = k+1; l < numbers.length; l++)
                         {
                             // sprawdzam, czy l dzieli k

@@ -1,5 +1,5 @@
-26 626
-144 6
-210 4
-dobre trójki: 10
-dobre piątki: 1
+18 93639
+99792 10
+62790 6
+dobre trójki: 27
+dobre piątki: 2
