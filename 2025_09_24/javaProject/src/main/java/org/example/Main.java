@@ -57,8 +57,6 @@ public class Main
                     factor++;
                 }
             }
-//        System.out.println("number: "+n);
-//        System.out.println("primes: "+ primeFactors);
             PrimeFactors.put(n, primeFactors);
             return primeFactors;
         }
@@ -77,8 +75,6 @@ public class Main
                 resultArray.add(number);
             }
         }
-//        System.out.println("original: "+numbers);
-//        System.out.println("reduced:  "+resultArray);
         return resultArray;
     }
 
@@ -89,72 +85,9 @@ public class Main
 
     static int getNumberOfDifferentPrimeFactors(int n)
     {
-//        System.out.println("===============");
-//        System.out.println("number: "+n);
-        int result = removeDuplicates(getPrimeFactors(n)).size();
-//        System.out.println("returning: "+result);
-        return result;
+        return removeDuplicates(getPrimeFactors(n)).size();
     }
 
-    public static HashMap<IntPair, Boolean> AAndBFactors = new HashMap<>();
-    static boolean checkIfAIsFactorOfB(int a, int b)
-    {
-        if (a > b)
-        {
-            return false;
-        }
-        boolean valueExists = AAndBFactors.containsKey(new IntPair(a, b));
-        if (!valueExists)
-        {
-            ArrayList<Integer> aFactors = getPrimeFactors(a);
-            ArrayList<Integer> bFactors = getPrimeFactors(b);
-            for(Integer factor: aFactors)
-            {
-                if(!bFactors.contains(factor))
-                {
-                    AAndBFactors.put(new IntPair(a,b), false);
-                    return false;
-                }
-            }
-            AAndBFactors.put(new IntPair(a,b), true);
-            return true;
-        }
-        return AAndBFactors.get(new IntPair(a, b));
-    }
-
-    static boolean checkIfValid3(int x, int y, int z)
-    {
-        if(x == z & y == z)
-        {
-            return false;
-        }
-        else if(!checkIfAIsFactorOfB(x, y))
-        {
-            return false;
-        }
-        else return checkIfAIsFactorOfB(y, z);
-    }
-
-    static boolean checkIfValid5(int u, int w, int x, int y, int z)
-    {
-        if(x == y && x == z && x == u && x == w)
-        {
-            return false;
-        }
-        else if(!checkIfAIsFactorOfB(u, w))
-        {
-            return false;
-        }
-        else if(!checkIfAIsFactorOfB(w, x))
-        {
-            return false;
-        }
-        else if(!checkIfAIsFactorOfB(x, y))
-        {
-            return false;
-        }
-        else return checkIfAIsFactorOfB(y, z);
-    }
 
     static int getFileLength(File file)
     {
@@ -299,15 +232,5 @@ public class Main
         // saving 4.3 to a file
         writeToFile("wyniki4.txt", "dobre trójki: "+valid3, true);
         writeToFile("wyniki4.txt", "dobre piątki: "+valid5, true);
-
-
-
-
-            // testing the methods
-//        System.out.println(getNumberOfPrimeFactors(420)); // to działa
-//        System.out.println(getNumberOfDifferentPrimeFactors(420));
-
-//        System.out.println(removeDuplicates(new ArrayList<>(Arrays.asList(1, 2, 2, 3)))); // to działa
-
     }
 }
