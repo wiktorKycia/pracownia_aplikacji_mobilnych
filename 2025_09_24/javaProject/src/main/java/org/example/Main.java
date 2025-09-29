@@ -227,7 +227,7 @@ public class Main
             }
         }
         // saving 4.3 to a file
-        writeToFile("wyniki4.txt", "dobre trójki: "+valid3, true);
-        writeToFile("wyniki4.txt", "dobre piątki: "+valid5, true);
+        writeToFile("wyniki4.txt", "\ndobre trójki: "+valid3, true);
+        writeToFile("wyniki4.txt", "\ndobre piątki: "+valid5, true);
     }
 }
