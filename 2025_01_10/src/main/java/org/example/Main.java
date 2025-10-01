@@ -81,7 +81,7 @@ public class Main
     static void printDices(int[] dices)
     {
         for (int i = 0; i < dices.length; i++) {
-            System.out.println("Kostka "+i+1+": "+dices[i]);
+            System.out.println("Kostka "+(i+1)+": "+dices[i]);
         }
     }
 
