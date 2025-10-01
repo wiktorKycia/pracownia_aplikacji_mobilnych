@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;;
+import java.util.*;
 
 public class Main
 {
@@ -11,20 +8,48 @@ public class Main
     static void main()
     {
         IO.println("Hello and welcome!");
-
-        int numberOfDices = 0;
+        boolean running = true;
 
         do
         {
-            numberOfDices = getNumberOfDices();
+            int numberOfDices = 0;
+
+            do
+            {
+                numberOfDices = getNumberOfDices();
+            }
+            while (!(numberOfDices >= 3 && numberOfDices <= 10));
+
+            int[] dices = generateRandomDices(numberOfDices);
+            printDices(dices);
+
+            System.out.println("Liczba uzyskanych punktów: "+calculatePoints(dices));
+
+            String again = getUserInput();
+
+            if(Objects.equals(again, "n"))
+            {
+                running = false;
+            }
+
         }
-        while (!(numberOfDices >= 3 && numberOfDices <= 10));
+        while(running);
 
-        int[] dices = generateRandomDices(numberOfDices);
-        printDices(dices);
+    }
+    static String getUserInput()
+    {
+        Scanner scanner = new Scanner(System.in);
+        final String[] expectedAnswers = new String[]{"t", "n"};
+        while(true)
+        {
+            System.out.println("Jeszcze raz? (t/n)");
+            String input = scanner.nextLine();
 
-        System.out.println("Liczba uzyskanych punktów: "+calculatePoints(dices));
-
+            if (Arrays.asList(expectedAnswers).contains(input))
+            {
+                return input;
+            }
+        }
     }
     static int getNumberOfDices()
     {
