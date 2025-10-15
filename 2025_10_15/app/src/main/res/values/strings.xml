@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">inf04_ui_only</string>
     <string name="rejestruj_konto">Rejestruj konto</string>
+    <string name="podaj_e_mail">Podaj e-mail:</string>
+    <string name="podaj_has_o">Podaj hasło:</string>
+    <string name="powtorz_haslo">Powtórz hasło:</string>
 </resources>
