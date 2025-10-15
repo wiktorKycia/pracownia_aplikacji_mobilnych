@@ -21,7 +21,8 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/podaj_e_mail" />
+        android:text="@string/podaj_e_mail"
+        android:textColor="#FF888888" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -34,7 +35,8 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/podaj_has_o" />
+        android:text="@string/podaj_has_o"
+        android:textColor="#FF888888" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -47,7 +49,8 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/powtorz_haslo" />
+        android:text="@string/powtorz_haslo"
+        android:textColor="#FF888888" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -55,5 +58,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/zatwierdz" />
 
 </LinearLayout>
