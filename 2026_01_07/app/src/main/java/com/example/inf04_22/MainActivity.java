@@ -43,26 +43,41 @@ public class MainActivity extends AppCompatActivity
                 TextView output = (TextView) findViewById(R.id.outputTextView);
                 output.setText("Autor: 00000000000");
 
+                EditText passwordEntry1 = (EditText) findViewById(R.id.editTextTextPassword);
+                EditText passwordEntry2 = (EditText) findViewById(R.id.editTextTextPassword2);
+
+                String password = passwordEntry1.getText().toString();
+
                 // Email
                 if(!Pattern.matches("^(a-z0-9.)+@(a-z0-9.)+$", email)){
                     output.setText("Autor: 00000000000\n"+MainActivity.this.getString(R.string.to_nie_jest_email));
                 }
+                else if (!password.equals(passwordEntry2.getText().toString()))
+                {
+                    output.setText("Autor: 00000000000\n"+MainActivity.this.getString(R.string.hasla_sie_nie_zgadzaja));
+                }
+                else if(password.length() < 8)
+                {
+                    output.setText("Autor: 0000000000\n"+"Hasło powinno zawierać co najmniej 8 znaków");
+                }
+                else if (!password.matches(".*\\d+.*"))
+                {
+                    output.setText("Autor: 00000000000\n"+"Hasło powinno zawierać co najmniej 1 cyfrę");
+                }
+                else if (!password.matches(".*[A-Z]+.*"))
+                {
+                    output.setText("Autor: 00000000000\n"+"Hasło powinno zawierać co najmniej 1 dużą literę");
+                }
+                else if (!password.matches(".*[a-z]+.*"))
+                {
+                    output.setText("Autor: 00000000000\n"+"Hasło powinno zawierać co najmniej 1 małą literę");
+                }
                 else
                 {
-                    EditText passwordEntry1 = (EditText) findViewById(R.id.editTextTextPassword);
-                    EditText passwordEntry2 = (EditText) findViewById(R.id.editTextTextPassword2);
+                    output.setText("Autor: 00000000000\nWitaj " + email);
 
-                    if(!passwordEntry1.getText().toString().equals(passwordEntry2.getText().toString()))
-                    {
-                        output.setText("Autor: 00000000000\n"+MainActivity.this.getString(R.string.hasla_sie_nie_zgadzaja));
-                    }
-                    else
-                    {
-                        output.setText("Autor: 00000000000\nWitaj " + email);
-                    }
+                    startActivity(new Intent(MainActivity.this, MainActivity2.class));
                 }
-
-                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
     }
