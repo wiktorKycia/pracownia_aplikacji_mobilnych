@@ -8,4 +8,6 @@
     <string name="zatwierdz">ZATWIERDŹ</string>
     <string name="to_nie_jest_email">Nieprawidłowy adres e-mail</string>
     <string name="hasla_sie_nie_zgadzaja">Hasła się różnią</string>
+    <string name="witamy_w_aplikacji">Witamy w aplikacji</string>
+    <string name="wyloguj">Wyloguj</string>
 </resources>
