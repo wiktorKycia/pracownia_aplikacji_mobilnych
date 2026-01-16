@@ -48,36 +48,41 @@ public class MainActivity extends AppCompatActivity
                 EditText passwordEntry2 = (EditText) findViewById(R.id.editTextTextPassword2);
 
                 String password = passwordEntry1.getText().toString();
+                output.setTextColor(0xFF0000FF);
 
                 // Email
                 if(!Pattern.matches("^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+$", email)){
-                    output.setText("Autor: 00000000000\n"+MainActivity.this.getString(R.string.to_nie_jest_email));
+                    output.setText("Witaj + "+email+"\n"+MainActivity.this.getString(R.string.to_nie_jest_email));
                 }
                 else if (!password.equals(passwordEntry2.getText().toString()))
                 {
-                    output.setText("Autor: 00000000000\n"+MainActivity.this.getString(R.string.hasla_sie_nie_zgadzaja));
+                    output.setText("Witaj + "+email+"\n"+MainActivity.this.getString(R.string.hasla_sie_nie_zgadzaja));
                 }
                 else if(password.length() < 8)
                 {
-                    output.setText("Autor: 0000000000\n"+"Hasło powinno zawierać co najmniej 8 znaków");
+                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 8 znaków");
                 }
                 else if (!password.matches(".*\\d+.*"))
                 {
-                    output.setText("Autor: 00000000000\n"+"Hasło powinno zawierać co najmniej 1 cyfrę");
+                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 1 cyfrę");
                 }
                 else if (!password.matches(".*[A-Z]+.*"))
                 {
-                    output.setText("Autor: 00000000000\n"+"Hasło powinno zawierać co najmniej 1 dużą literę");
+                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 1 dużą literę");
                 }
                 else if (!password.matches(".*[a-z]+.*"))
                 {
-                    output.setText("Autor: 00000000000\n"+"Hasło powinno zawierać co najmniej 1 małą literę");
+                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 1 małą literę");
                 }
                 else
                 {
+                    output.setTextColor(0xFF000000);
                     output.setText("Autor: 00000000000\nWitaj " + email);
 
-                    startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                    Intent i = new Intent(MainActivity.this, MainActivity2.class);
+                    i.putExtra("email", email);
+                    i.putExtra("pass", password);
+                    startActivity(i);
                 }
             }
         });
