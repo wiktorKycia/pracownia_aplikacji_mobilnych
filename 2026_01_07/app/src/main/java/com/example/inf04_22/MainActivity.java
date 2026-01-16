@@ -1,5 +1,6 @@
 package com.example.inf04_22;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity
                         output.setText("Autor: 00000000000\nWitaj " + email);
                     }
                 }
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
     }
