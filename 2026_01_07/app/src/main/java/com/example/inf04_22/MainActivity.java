@@ -52,27 +52,27 @@ public class MainActivity extends AppCompatActivity
 
                 // Email
                 if(!Pattern.matches("^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+$", email)){
-                    output.setText("Witaj + "+email+"\n"+MainActivity.this.getString(R.string.to_nie_jest_email));
+                    output.setText("Witaj "+email+"\n"+MainActivity.this.getString(R.string.to_nie_jest_email));
                 }
                 else if (!password.equals(passwordEntry2.getText().toString()))
                 {
-                    output.setText("Witaj + "+email+"\n"+MainActivity.this.getString(R.string.hasla_sie_nie_zgadzaja));
+                    output.setText("Witaj "+email+"\n"+MainActivity.this.getString(R.string.hasla_sie_nie_zgadzaja));
                 }
                 else if(password.length() < 8)
                 {
-                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 8 znaków");
+                    output.setText("Witaj "+email+"\n"+"Hasło powinno zawierać co najmniej 8 znaków");
                 }
                 else if (!password.matches(".*\\d+.*"))
                 {
-                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 1 cyfrę");
+                    output.setText("Witaj "+email+"\n"+"Hasło powinno zawierać co najmniej 1 cyfrę");
                 }
                 else if (!password.matches(".*[A-Z]+.*"))
                 {
-                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 1 dużą literę");
+                    output.setText("Witaj "+email+"\n"+"Hasło powinno zawierać co najmniej 1 dużą literę");
                 }
                 else if (!password.matches(".*[a-z]+.*"))
                 {
-                    output.setText("Witaj + "+email+"\n"+"Hasło powinno zawierać co najmniej 1 małą literę");
+                    output.setText("Witaj "+email+"\n"+"Hasło powinno zawierać co najmniej 1 małą literę");
                 }
                 else
                 {
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity
 
                     Intent i = new Intent(MainActivity.this, MainActivity2.class);
                     i.putExtra("email", email);
-                    i.putExtra("pass", password);
                     startActivity(i);
                 }
             }
