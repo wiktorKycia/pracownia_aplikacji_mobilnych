@@ -1,6 +1,8 @@
 package com.example.inf04_22;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +33,14 @@ public class MainActivity2 extends AppCompatActivity {
 
             output.append(" "+email);
         }
+
+        Button button = (Button) findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }
