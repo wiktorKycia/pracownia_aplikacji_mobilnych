@@ -13,6 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -39,8 +42,9 @@ public class MainActivity extends AppCompatActivity
                 String email = emailEntry.getText().toString();
                 TextView output = (TextView) findViewById(R.id.outputTextView);
                 output.setText("Autor: 00000000000");
-                if(!email.contains("@"))
-                {
+
+                // Email
+                if(!Pattern.matches("^(a-z0-9.)+@(a-z0-9.)+$", email)){
                     output.setText("Autor: 00000000000\n"+MainActivity.this.getString(R.string.to_nie_jest_email));
                 }
                 else
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity
                         output.setText("Autor: 00000000000\nWitaj " + email);
                     }
                 }
+
                 startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
