@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">2026_02_04</string>
+    <string name="email">email</string>
+    <string name="imie">Imię</string>
+    <string name="nazwisko">Nazwisko</string>
+    <string name="zaloguj_sie">Zaloguj się</string>
+</resources>
