@@ -4,4 +4,5 @@
     <string name="imie">Imię</string>
     <string name="nazwisko">Nazwisko</string>
     <string name="zaloguj_sie">Zaloguj się</string>
+    <string name="adres_email">Adres email</string>
 </resources>
