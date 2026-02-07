@@ -27,25 +27,25 @@ public class FirstFragment extends Fragment {
         button.setOnClickListener(v -> {
             FragmentActivity mainActivity = getActivity();
             assert mainActivity != null;
-            EditText emailEntry = (EditText) view.findViewById(R.id.editTextEmail);
-            String email = emailEntry.getText().toString();
+            EditText emailEntry = view.findViewById(R.id.editTextEmail);
+            String email = emailEntry.getText().toString().trim();
 
-            if(Pattern.matches("^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+$", email))
+            if(Pattern.matches("^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+$", email))
             {
                 EditText nameEntry = view.findViewById(R.id.editTextText2);
                 String name = nameEntry.getText().toString();
 
                 EditText surnameEntry = view.findViewById(R.id.editTextText3);
-                String surname = nameEntry.getText().toString();
+                String surname = surnameEntry.getText().toString();
 
                 if (name.equals("Ryszard") && surname.equals("Pyssa"))
                 {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+//                    FragmentManager fragmentManager = getParentFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
                 }
             }
         });
