@@ -5,4 +5,6 @@
     <string name="nazwisko">Nazwisko</string>
     <string name="zaloguj_sie">Zaloguj się</string>
     <string name="adres_email">Adres email</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
