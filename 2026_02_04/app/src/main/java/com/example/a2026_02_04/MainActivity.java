@@ -27,24 +27,24 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(v -> {
-            EditText emailEntry = (EditText) findViewById(R.id.editTextEmail);
-            String email = emailEntry.getText().toString();
-
-            if(Pattern.matches("^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+$", email))
-            {
-                EditText nameEntry = findViewById(R.id.editTextText2);
-                String name = nameEntry.getText().toString();
-
-                EditText surnameEntry = findViewById(R.id.editTextText3);
-                String surname = nameEntry.getText().toString();
-
-                if (name.equals("Ryszard") && surname.equals("Pyssa"))
-                {
-
-                }
-            }
-        });
+//        Button button = (Button) findViewById(R.id.button);
+//        button.setOnClickListener(v -> {
+//            EditText emailEntry = (EditText) findViewById(R.id.editTextEmail);
+//            String email = emailEntry.getText().toString();
+//
+//            if(Pattern.matches("^[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+$", email))
+//            {
+//                EditText nameEntry = findViewById(R.id.editTextText2);
+//                String name = nameEntry.getText().toString();
+//
+//                EditText surnameEntry = findViewById(R.id.editTextText3);
+//                String surname = nameEntry.getText().toString();
+//
+//                if (name.equals("Ryszard") && surname.equals("Pyssa"))
+//                {
+//
+//                }
+//            }
+//        });
     }
 }
