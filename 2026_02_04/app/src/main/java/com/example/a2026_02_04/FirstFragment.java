@@ -40,12 +40,19 @@ public class FirstFragment extends Fragment {
 
                 if (name.equals("Ryszard") && surname.equals("Pyssa"))
                 {
-//                    FragmentManager fragmentManager = getParentFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//
-//                    fragmentTransaction.addToBackStack(null);
-//                    fragmentTransaction.commit();
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    var fragment = new SecondFragment();
+                    Bundle args = new Bundle();
+                    args.putString("email", email);
+                    args.putString("name", name);
+                    args.putString("surname", surname);
+                    fragment.setArguments(args);
+                    fragmentTransaction.replace(R.id.main, fragment);
+
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }
             }
         });
