@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Sprawdzian Wiktor Kycia 4D</string>
+    <string name="logo_zsk">Logo ZSK</string>
+    <string name="zglos_brak_mundurka">Zgłoś brak mundurka</string>
+    <string name="imie">Imię</string>
+    <string name="nazwisko">Nazwisko</string>
+    <string name="klasa">Klasa</string>
+    <string name="zapisz_uwage">ZAPISZ UWAGĘ</string>
+    <string name="zapisano_uwage">Zapisano uwagę</string>
 </resources>

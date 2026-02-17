@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ReportedActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -28,9 +28,8 @@
             android:id="@+id/no_uniform"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/zglos_brak_mundurka"
-            android:theme="@style/heading"
-            />
+            android:text="@string/zapisano_uwage"
+            android:theme="@style/heading" />
 
         <TextView
             android:id="@+id/name_label"
@@ -39,13 +38,11 @@
             android:theme="@style/label"
             android:text="@string/imie" />
 
-        <EditText
-            android:id="@+id/name_input"
+        <TextView
+            android:id="@+id/reported_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:theme="@style/input"
+            android:theme="@style/reported"
             android:text="" />
 
         <TextView
@@ -55,13 +52,11 @@
             android:text="@string/nazwisko"
             android:theme="@style/label" />
 
-        <EditText
-            android:id="@+id/surname_input"
+        <TextView
+            android:id="@+id/reported_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:theme="@style/input"
+            android:theme="@style/reported"
             android:text="" />
 
         <TextView
@@ -71,13 +66,11 @@
             android:theme="@style/label"
             android:text="@string/klasa" />
 
-        <EditText
-            android:id="@+id/class_input"
+        <TextView
+            android:id="@+id/reported_class"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:theme="@style/input"
+            android:theme="@style/reported"
             android:text="" />
 
         <Button
