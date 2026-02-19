@@ -77,7 +77,7 @@
             android:id="@+id/save_note_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/zapisz_uwage"
+            android:text="@string/dodaj_nowa_uwage"
             android:theme="@style/button" />
     </LinearLayout>
 

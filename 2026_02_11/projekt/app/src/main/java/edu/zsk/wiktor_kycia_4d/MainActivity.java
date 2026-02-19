@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.app.ProgressDialog;
+//import android.app.ProgressDialog;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,9 +45,18 @@ public class MainActivity extends AppCompatActivity {
                 String surname = surname_input.getText().toString();
                 String class_ = class_input.getText().toString();
 
-                var i = new Intent();
+                var i = new Intent(this, ReportedActivity.class);
 
-                var pd = new ProgressDialog("Dodaję uwagę");
+                i.putExtra("imie", name);
+                i.putExtra("nazwisko", surname);
+                i.putExtra("klasa", class_);
+
+                name_input.setText("");
+                surname_input.setText("");
+                class_input.setText("");
+
+//                var pd = new ProgressDialog("Dodaję uwagę");
+                startActivity(i);
             }
         });
     }
