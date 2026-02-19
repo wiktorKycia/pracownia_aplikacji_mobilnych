@@ -1,11 +1,11 @@
 package edu.zsk.wiktor_kycia_4d;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-//import android.app.ProgressDialog;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,8 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 surname_input.setText("");
                 class_input.setText("");
 
-//                var pd = new ProgressDialog("Dodaję uwagę");
-                startActivity(i);
+                ProgressDialog dialog = new ProgressDialog(this);
+                dialog.setTitle("Dodaję uwagę");
+                dialog.setMessage("Proszę czekać...");
+                dialog.setCancelable(false);
+                dialog.show();
+
+                new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                    dialog.dismiss();
+                    startActivity(i);
+                }, 2000);
             }
         });
     }
