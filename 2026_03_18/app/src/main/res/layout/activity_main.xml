@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8FEC8F"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E8A57"
+        android:text="@string/wizyta_u_weterynarza"
+        android:textAlignment="center"
+        android:textColor="#16432A"
+        android:textSize="48sp" />
+
+    <EditText
+        android:id="@+id/owner_name_and_surname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/imi_i_nazwisko_w_a_ciciela"
+        android:inputType="text"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/gatunek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Gatunek"
+        android:text="" />
+
+    <ListView
+        android:id="@+id/gatunek_listview"
+        android:layout_width="match_parent"
+        android:layout_height="148dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ile_lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ile_ma_lat" />
+
+        <TextView
+            android:id="@+id/ile_lat_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 0 " />
+
+        <SeekBar
+            android:id="@+id/wiek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"
+            android:min="0" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/cel_wizyty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/cel_wizyty"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/czas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:text="16:00" />
+
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#6200ED"
+        android:text="@string/ok"
+        app:cornerRadius="10dp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+</LinearLayout>
