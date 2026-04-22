@@ -11,11 +11,8 @@ import android.widget.Button;
 
 
 public class SecondFragment extends Fragment {
-
     public SecondFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
