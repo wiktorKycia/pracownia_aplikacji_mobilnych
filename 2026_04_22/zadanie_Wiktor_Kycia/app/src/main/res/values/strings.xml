@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Zadanie Podsumowujące Wiktor Kycia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zaloguj_si">Zaloguj się</string>
+    <string name="has_o">Hasło</string>
+    <string name="adres_e_mail">Adres e-mail</string>
+    <string name="logowanie">Logowanie</string>
+    <string name="zmie_fragment">Zmień fragment</string>
+    <string name="poka_powiadomienie">Pokaż powiadomienie</string>
+    <string name="android_1">Android 1</string>
+    <string name="android_2">Android 2</string>
+    <string name="android_3">Android 3</string>
+    <string name="android_4">Android 4</string>
+    <string name="otw_rz_okno_dialogowe">Otwórz okno dialogowe</string>
+    <string name="fragment_2">Fragment 2</string>
+    <string name="fragment_1">Fragment 1</string>
+</resources>
