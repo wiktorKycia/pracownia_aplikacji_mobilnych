@@ -1,6 +1,9 @@
 package edu.zsk.kycia;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        initDb();
 
         Button loginButton = findViewById(R.id.loginButton);
 
@@ -55,13 +61,47 @@ public class MainActivity extends AppCompatActivity {
     }
     private boolean checkCredentials(String email, String password)
     {
-        if(Objects.equals(email, "admin@example.com") && Objects.equals(password, "admin"))
-        {
-            return true;
+        Cursor cursor = db.rawQuery("SELECT password FROM users WHERE email = ?", new String[]{email});
+        if (cursor.moveToFirst()) {
+            String dbPassword = cursor.getString(0);
+            cursor.close();
+            return dbPassword.equals(password);
         }
         else
         {
+            cursor.close();
             return false;
         }
+    }
+
+    private void initDb() {
+        db = openOrCreateDatabase("UsersDB", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)");
+
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM users", null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        if (count == 0) {
+            ContentValues values = new ContentValues();
+            values.put("email", "admin@example.com");
+            values.put("password", "admin");
+            db.insert("users", null, values);
+
+            values = new ContentValues();
+            values.put("email", "user1@example.com");
+            values.put("password", "user1");
+            db.insert("users", null, values);
+
+            values = new ContentValues();
+            values.put("email", "user2@example.com");
+            values.put("password", "user2");
+            db.insert("users", null, values);
+
+            values = new ContentValues();
+            values.put("email", "user3@example.com");
+            values.put("password", "user3");
+            db.insert("users", null, values);
+        }
+        cursor.close();
     }
 }
