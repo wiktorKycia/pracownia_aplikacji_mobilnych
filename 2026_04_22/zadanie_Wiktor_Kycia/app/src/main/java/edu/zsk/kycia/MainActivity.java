@@ -1,5 +1,6 @@
 package edu.zsk.kycia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             else if(checkCredentials(email, password))
             {
                 Toast.makeText(this, "Zalogowano!", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, LoggedInActivity.class);
+                startActivity(i);
             }
             else
             {
