@@ -18,7 +18,7 @@
         android:textColor="@color/white"
         android:layout_marginVertical="10dp"
         android:textSize="24sp"
-        android:text="Gra w kości. Autor 00000000000" />
+        android:text="@string/app_title" />
 
     <Button
         android:id="@+id/button"
@@ -28,7 +28,7 @@
         android:layout_marginVertical="10dp"
         android:background="@color/Chocolate"
         android:shadowRadius="@dimen/material_emphasis_medium"
-        android:text="RZUĆ KOŚĆMI" />
+        android:text="@string/roll_button" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,7 +80,7 @@
         android:layout_gravity="center"
         android:layout_marginVertical="10dp"
         android:background="@color/Beige"
-        android:text="Wynik tego losowania: " />
+        android:text="@string/roll_result" />
 
     <TextView
         android:id="@+id/textView3"
@@ -89,7 +89,7 @@
         android:background="@color/Beige"
         android:layout_gravity="center"
         android:layout_marginVertical="10dp"
-        android:text="Wynik gry: " />
+        android:text="@string/game_score" />
 
     <Button
         android:id="@+id/button2"
@@ -98,5 +98,5 @@
         android:layout_marginVertical="10dp"
         android:layout_gravity="center"
         android:background="@color/Chocolate"
-        android:text="RESETUJ WYNIK" />
+        android:text="@string/reset_button" />
 </LinearLayout>

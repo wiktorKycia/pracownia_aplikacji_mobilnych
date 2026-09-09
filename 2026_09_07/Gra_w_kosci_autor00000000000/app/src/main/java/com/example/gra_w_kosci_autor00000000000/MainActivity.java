@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
 
     public int randomization_score = 0;
 
-    public ImageView image1 = findViewById(R.id.imageView1);
-    public ImageView image2 = findViewById(R.id.imageView2);
-    public ImageView image3 = findViewById(R.id.imageView3);
-    public ImageView image4 = findViewById(R.id.imageView4);
-    public ImageView image5 = findViewById(R.id.imageView5);
+    public ImageView image1;
+    public ImageView image2;
+    public ImageView image3;
+    public ImageView image4;
+    public ImageView image5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,18 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        image1 = findViewById(R.id.imageView1);
+        image2 = findViewById(R.id.imageView2);
+        image3 = findViewById(R.id.imageView3);
+        image4 = findViewById(R.id.imageView4);
+        image5 = findViewById(R.id.imageView5);
+
         Button button = findViewById(R.id.button);
         TextView randomization_score_textview = findViewById(R.id.textView2);
         TextView game_score_textview = findViewById(R.id.textView3);
+
+        randomization_score_textview.setText(getString(R.string.roll_result, 0));
+        game_score_textview.setText(getString(R.string.game_score, 0));
 
         button.setOnClickListener(v -> {
             for (int i = 0; i < 5; i++)
@@ -47,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
             randomization_score = calculateScore(numbers);
             score += randomization_score;
 
-            randomization_score_textview.setText(String.format("%s%s", randomization_score_textview.getText(), randomization_score));
-            game_score_textview.setText(String.format("%s%s", game_score_textview.getText(), score));
+            randomization_score_textview.setText(getString(R.string.roll_result, randomization_score));
+            game_score_textview.setText(getString(R.string.game_score, score));
 
             setImages();
         });
@@ -58,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             randomization_score = 0;
             score = 0;
             numbers = new int[]{0, 0, 0, 0, 0};
+            randomization_score_textview.setText(getString(R.string.roll_result, randomization_score));
+            game_score_textview.setText(getString(R.string.game_score, score));
             setImages();
         });
 
