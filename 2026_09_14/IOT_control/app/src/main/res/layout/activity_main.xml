@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/LightBlue"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:layout_margin="5dp"
+        android:text="@string/urz_dzenia_domowe" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:text="@string/autor_00000000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView_pralka"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/pralka" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewPralka"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pralka"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/editText_nr_prania"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:background="@color/SkyBlue"
+                android:textColor="@color/Navy"
+                android:textColorHint="@color/Navy"
+                android:hint="@string/podaj_nr_prania_1_12"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/buttonPralka"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/RoyalBlue"
+                android:layout_margin="10dp"
+                android:text="@string/zatwierd" />
+
+            <TextView
+                android:id="@+id/textView_nr_prania"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nr prania: nie podano" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView_roomba"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/odkurzacz" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewRoomba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/odkurzacz"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/buttonRoomba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/RoyalBlue"
+                android:layout_margin="10dp"
+                android:text="@string/w_cz" />
+
+            <TextView
+                android:id="@+id/textView_roomba_is_on"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Odkurzacz wyłączony" />
+
+            <TextView
+                android:id="@+id/textView_roomba_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status: naładowany" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

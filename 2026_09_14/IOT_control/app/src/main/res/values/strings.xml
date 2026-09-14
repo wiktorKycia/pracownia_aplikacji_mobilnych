@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IOT_control</string>
+    <string name="pralka">Pralka</string>
+    <string name="urz_dzenia_domowe">Urządzenia Domowe</string>
+    <string name="autor_00000000000">Autor: 00000000000</string>
+    <string name="podaj_nr_prania_1_12">Podaj nr prania 1 .. 12</string>
+    <string name="zatwierd">Zatwierdź</string>
+    <string name="odkurzacz">Odkurzacz</string>
+    <string name="w_cz">Włącz</string>
+</resources>
