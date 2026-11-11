@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/ColorOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:width="200dp"
+        android:height="80dp"
+        android:background="@drawable/main_rect"
+        />
+
+    <TextView
+        android:id="@+id/MainLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dobierz kolor suwakami i zapisz przyciskiem" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/RedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R" />
+
+        <SeekBar
+            android:id="@+id/seekBarRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:min="0"
+            android:max="255"
+            android:progress="255"
+            />
+
+        <TextView
+            android:id="@+id/RedOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="255" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/GreenLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="G" />
+
+        <SeekBar
+            android:id="@+id/seekBarGreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:min="0"
+            android:max="255"
+            android:progress="255"
+            />
+
+        <TextView
+            android:id="@+id/GreenOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="255" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/BlueLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B" />
+
+        <SeekBar
+            android:id="@+id/seekBarBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:min="0"
+            android:max="255"
+            android:progress="255"
+            />
+
+        <TextView
+            android:id="@+id/BlueOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="255" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Pobierz"
+        />
+
+    <TextView
+        android:id="@+id/MainOutput"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="255, 255, 255"
+        android:textAlignment="center"
+        />
+    <!--tu po kliknięciu zmienić text i background -->
+
+</LinearLayout>
